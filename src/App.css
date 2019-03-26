@@ -84,3 +84,23 @@
   padding: 10px;
   margin: 10px;
 }
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed black;
+  padding: 10px;
+  margin: 10px;
+}
+
+.post {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed black;
+  padding: 10px;
+  margin: 10px;
+}
