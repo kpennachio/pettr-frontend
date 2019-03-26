@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import PetProfile from '../PetProfile'
+import PetProfile from '../components/PetProfile'
 import Header from '../components/Header'
 
 class UserContainer extends Component {

@@ -1,9 +1,9 @@
 // need to keep file here so pictures can render
 import React, { Component, Fragment } from 'react'
-import PetInfo from './components/PetInfo'
-import PostContainer from './containers/PostContainer'
-import SuggestionContainer from './containers/SuggestionContainer'
-import DateContainer from './containers/DateContainer'
+import PetInfo from './PetInfo'
+import PostContainer from '../containers/PostContainer'
+import SuggestionContainer from '../containers/SuggestionContainer'
+import DateContainer from '../containers/DateContainer'
 // import './css/PetProfile.css'
 // can import every photo and logically render
 // name.
