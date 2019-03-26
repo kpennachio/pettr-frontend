@@ -11,22 +11,11 @@ export default class PetProfile extends Component {
 
 
   findPet = () => {
-    console.log("running");
-    // console.log(this.props)
-    // debugger
     let pet = this.props.pets.find(pet => pet.id === parseInt(this.props.match.params.id))
-    console.log(pet);
-    // debugger
     return <PetInfo pet={pet}/>
   }
 
   render() {
-    console.log("something");
-    // console.log(this.props);
-    // console.log(this.props.pet.picture)
-    // let {picture} = this.props.pet
-    // console.log(picture);
-    // // debugger
     return(
       <Fragment>
         <h1>Pet Profile</h1>
