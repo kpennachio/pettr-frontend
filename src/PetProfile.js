@@ -1,25 +1,26 @@
 // need to keep file here so pictures can render
-import React, { Component } from 'react'
-// import Athena from '../Pet_Pictures/Brody.jpg'
-import './css/PetProfile.css'
+import React, { Component, Fragment } from 'react'
+import PetInfo from './components/PetInfo'
+import PostContainer from './containers/PostContainer'
+import SuggestionContainer from './containers/SuggestionContainer'
+import DateContainer from './containers/DateContainer'
+// import './css/PetProfile.css'
 // can import every photo and logically render
 // name.
 export default class PetProfile extends Component {
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     // console.log(this.props.pet.picture)
-    let {name, species, hobbies, breed, age, picture} = this.props.pet
-    // debugger
+    // let {picture} = this.props.pet
+    // console.log(picture);
+    // // debugger
     return(
-      <div>
-        {name}
-        {age}
-        {species}
-        {breed}
-        <div className="profile-pic">
-          <img src={require(`${picture}`)} />
-        </div>
-      </div>
+      <Fragment>
+        <PetInfo pet={this.props.pet}/>
+        <PostContainer />
+        <DateContainer />
+        <SuggestionContainer />
+      </Fragment>
     )
   }
 }
