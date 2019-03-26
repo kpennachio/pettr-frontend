@@ -95,7 +95,6 @@
   margin: 10px;
 }
 
-<<<<<<< HEAD
 .suggestion-pic {
     width: 200px;
     height: 200px;
@@ -106,7 +105,8 @@
     width: 100%;
     height: auto;
     float: left;
-=======
+}
+
 .form-container {
   display: flex;
   flex-direction: column;
@@ -125,5 +125,4 @@
   border: 1px dashed black;
   padding: 10px;
   margin: 10px;
->>>>>>> fb895482545bcd7d1690aa898ad821eef1b89580
 }
