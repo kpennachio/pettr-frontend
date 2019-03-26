@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  /* text-align: center; */
 }
 
 .App-logo {
@@ -13,7 +13,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
@@ -43,17 +43,27 @@
 .profile-pic img {
     width: 100%;
     height: auto;
+    float: left;
 }
 
 .pet-info {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  /* align-items: center; */
+  /* justify-content: center; */
   border: 1px dashed black;
   padding: 10px;
   margin: 10px;
 }
+
+.name {
+  float:left;
+}
+
+.pet-attributes {
+  align-items: center;
+}
+/* ########################################################################## */
 
 .post-container {
   display: flex;
@@ -83,4 +93,16 @@
   border: 1px dashed black;
   padding: 10px;
   margin: 10px;
+}
+
+.suggestion-pic {
+    width: 200px;
+    height: 200px;
+    float: left;
+}
+
+.suggestion-pic img {
+    width: 100%;
+    height: auto;
+    float: left;
 }

@@ -8,7 +8,20 @@ import DateContainer from '../containers/DateContainer'
 // can import every photo and logically render
 // name.
 export default class PetProfile extends Component {
+
+
+  findPet = () => {
+    console.log("running");
+    // console.log(this.props)
+    // debugger
+    let pet = this.props.pets.find(pet => pet.id === parseInt(this.props.match.params.id))
+    console.log(pet);
+    // debugger
+    return <PetInfo pet={pet}/>
+  }
+
   render() {
+    console.log("something");
     // console.log(this.props);
     // console.log(this.props.pet.picture)
     // let {picture} = this.props.pet
@@ -16,14 +29,15 @@ export default class PetProfile extends Component {
     // // debugger
     return(
       <Fragment>
-        <PetInfo pet={this.props.pet}/>
+        <h1>Pet Profile</h1>
+        {this.findPet()}
         <PostContainer />
         <DateContainer />
-        <SuggestionContainer />
       </Fragment>
     )
   }
 }
 
+// <PetInfo pet={this.props.pet}/>
 // render for pet imgs
 // <img src={require(`${this.props.pet.picture}`)}/>

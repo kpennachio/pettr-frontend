@@ -1,9 +1,14 @@
 import React from "react"
+import { BrowserRouter as Route, Link } from "react-router-dom";
 
-const Suggestion = () => {
+
+const Suggestion = (props) => {
   return (
   <div className="">
-    pic and name of pet
+  <div className="suggestion-pic">
+    <img src={props.pet.picture} alt={props.pet.name}/>
+  </div>
+    <Link to={`/pet/${props.pet.id}`}>{props.pet.name}</Link>
   </div>
   )
 }

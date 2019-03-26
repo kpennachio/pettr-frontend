@@ -1,6 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
+import { Route, Link } from "react-router-dom";
+
 import PetProfile from '../components/PetProfile'
 import Header from '../components/Header'
+import SuggestionContainer from './SuggestionContainer'
 
 class UserContainer extends Component {
 
@@ -24,10 +27,12 @@ class UserContainer extends Component {
 
   render() {
     return (
-      <div>
+      <Fragment>
         <Header />
-        {this.renderPets()}
-      </div>
+
+        <Route path="/pet/:id" component={(props) => <PetProfile {...props} pets={this.state.pets}/>}/>
+        <SuggestionContainer pets={this.state.pets}/>
+      </Fragment>
     )
   }
 }
