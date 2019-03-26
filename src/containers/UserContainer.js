@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import PetProfile from './PetProfile'
+import PetProfile from '../PetProfile'
+import Header from '../components/Header'
 
 class UserContainer extends Component {
 
@@ -15,13 +16,16 @@ class UserContainer extends Component {
 
   renderPets = () => {
     return this.state.pets.map(pet => {
-      return <PetProfile pet={pet} />
+      if (pet.name === "Oreo") {
+        return <PetProfile key={pet.id} pet={pet} />
+      }
     })
   }
 
   render() {
     return (
       <div>
+        <Header />
         {this.renderPets()}
       </div>
     )
