@@ -11,24 +11,46 @@ export default class CreateAccount extends Component {
     breed: "",
     hobbies: "",
     plays_well: "",
-    picture: "",
-    bio: ""
+    picture: ""
   }
 
   handleChange = (e) => {
-    console.log(e.target.value)
     this.setState({[e.target.id]: e.target.value})
   }
 
-  // "id": 1,
-  //     "name": "Oreo",
-  //     "age": 9,
-  //     "species": "Cat",
-  //     "breed": "Domestic Shorthair",
-  //     "hobbies": "Sleeping, Meowing, running",
-  //     "plays_well": false,
-  //     "picture": "https://res.cloudinary.com/mod4flatiron010719/image/upload/v1553623428/mod4%20project/Oreo.jpg",
-  //     "bio": null
+  handleCheckboxChange = (e) => {
+    this.setState((prevState) => ({
+      plays_well: !prevState.plays_well
+    }))
+  }
+
+
+  openWidget = (e) => {
+    e.preventDefault()
+    let widget = window.cloudinary.createUploadWidget({
+      cloudName: process.env.REACT_APP_CLOUD_NAME, uploadPreset: process.env.REACT_APP_UPLOAD_PRESET }, (error, result) => {this.seeResult(result)});
+    widget.open();
+  }
+
+  seeResult = (result) => {
+    if (result.event === "success") {
+      this.setState({picture: result.info.secure_url})
+    }
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault()
+    this.props.createNewPet(this.state)
+    this.setState({
+      name: "",
+      age: "",
+      species: "",
+      breed: "",
+      hobbies: "",
+      plays_well: false,
+      picture: ""
+    })
+  }
 
   render() {
     return(
@@ -55,18 +77,19 @@ export default class CreateAccount extends Component {
           </p>
           <p>
             <label htmlFor="hobbies">Hobbies</label>
-            <input type="text" id="hobbies" value={this.state.hobbies} onChange={this.handleChange}/>
+            <textarea id="hobbies" value={this.state.hobbies} onChange={this.handleChange}/>
           </p>
           <p>
             <label htmlFor="plays_well">Do you play well with others?</label>
-            <input type="checkBox" id="plays_well" value={this.state.plays_well} onChange={this.handleChange}/>
+            <input type="checkBox" id="plays_well" checked={this.state.plays_well} onClick={this.handleCheckboxChange}/>
           </p>
           <p>
             <label htmlFor="picture">Select a profile picture</label>
-            <input type="text" id="picture" value={this.state.picture} onChange={this.handleChange}/>
+            <button onClick={this.openWidget}>Select Image</button>
+            <input type="text" id="image" value={this.state.picture} onChange={this.handleChange}/>
           </p>
           <p>
-            <input type="submit" value="Create Account" onChange={this.handleChange}/>
+            <input type="submit" value="Create Account" onClick={this.handleSubmit}/>
           </p>
         </fieldset>
       </form>
