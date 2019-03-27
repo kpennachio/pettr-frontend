@@ -16,16 +16,36 @@ export default class PetProfile extends Component {
   //   return <PetInfo pet={pet}/>
   // }
 
-  render() {
-    return(
-      <Fragment>
-      {this.props.pet ?
+  //localStorage.getItem('currentPet')
+
+  renderPetProfile = () => {
+    // if the pet profile id matches the current user id
+    if (this.props.pet.id === parseInt(localStorage.getItem('currentPet'))) {
+      return(
         <div>
           <h1>Pet Profile</h1>
           <PetInfo pet={this.props.pet}/>
           <PostContainer />
           <DateContainer />
         </div>
+      )
+    }
+    else {
+      return(
+        <div>
+          <h1>Pet Profile</h1>
+          <PetInfo pet={this.props.pet}/>
+          <PostContainer />
+        </div>
+      )
+    }
+  }
+
+  render() {
+    return(
+      <Fragment>
+      {this.props.pet ?
+        this.renderPetProfile()
         :
         null
       }
