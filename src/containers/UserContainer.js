@@ -25,12 +25,19 @@ class UserContainer extends Component {
     })
   }
 
+  // finds pet from id in the URL
+  findPet = () => {
+    console.log(this.state.pets)
+    let pet = this.state.pets.find(pet => pet.id === parseInt(this.props.match.params.id))
+    console.log(pet);
+    return pet
+  }
+
   render() {
     return (
       <Fragment>
         <Header />
-
-        <Route path="/pet/:id" component={(props) => <PetProfile {...props} pets={this.state.pets}/>}/>
+        <PetProfile pet={this.findPet()}/>
         <SuggestionContainer pets={this.state.pets}/>
       </Fragment>
     )

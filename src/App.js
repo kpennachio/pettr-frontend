@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter as Route, Link } from "react-router-dom";
+import { Route, Link, Switch } from "react-router-dom";
 import UserContainer from './containers/UserContainer'
+import LoginContainer from './containers/LoginContainer'
 
 // route => / => Home
 // route => / => Home
@@ -10,11 +11,16 @@ import UserContainer from './containers/UserContainer'
 
 
 class App extends Component {
+
+
   render() {
     return (
       <div className="App">
        <Link to="/">Home</Link>
-       <UserContainer />
+        <Switch>
+          <Route path="/login" component={LoginContainer} />
+          <Route path="/pets/:id" component={UserContainer}/>
+        </Switch>
       </div>
     );
   }

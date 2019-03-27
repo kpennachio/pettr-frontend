@@ -10,34 +10,26 @@ import DateContainer from '../containers/DateContainer'
 export default class PetProfile extends Component {
 
 
-  findPet = () => {
-    console.log("running");
-    // console.log(this.props)
-    // debugger
-    let pet = this.props.pets.find(pet => pet.id === parseInt(this.props.match.params.id))
-    console.log(pet);
-    // debugger
-    return <PetInfo pet={pet}/>
-  }
+  // findPet = () => {
+  //   let pet = this.props.pets.find(pet => pet.id === parseInt(this.props.match.params.id))
+  //   console.log(pet);
+  //   return <PetInfo pet={pet}/>
+  // }
 
   render() {
-    console.log("something");
-    // console.log(this.props);
-    // console.log(this.props.pet.picture)
-    // let {picture} = this.props.pet
-    // console.log(picture);
-    // // debugger
     return(
       <Fragment>
-        <h1>Pet Profile</h1>
-        {this.findPet()}
-        <PostContainer />
-        <DateContainer />
+      {this.props.pet ?
+        <div>
+          <h1>Pet Profile</h1>
+          <PetInfo pet={this.props.pet}/>
+          <PostContainer />
+          <DateContainer />
+        </div>
+        :
+        null
+      }
       </Fragment>
     )
   }
 }
-
-// <PetInfo pet={this.props.pet}/>
-// render for pet imgs
-// <img src={require(`${this.props.pet.picture}`)}/>
