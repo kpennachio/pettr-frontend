@@ -36,7 +36,7 @@ class UserContainer extends Component {
     return (
       <Fragment>
         <Header />
-        <PetProfile pet={this.findPet()}/>
+        <PetProfile {...this.props} pet={this.findPet()}/>
         <SuggestionContainer pets={this.props.pets}/>
       </Fragment>
     )
