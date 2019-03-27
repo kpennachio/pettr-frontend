@@ -3,6 +3,8 @@ import './App.css';
 import { Route, Link, Switch } from "react-router-dom";
 import UserContainer from './containers/UserContainer'
 import LoginContainer from './containers/LoginContainer'
+import CreateAccount from './components/CreateAccount'
+
 
 
 
@@ -32,7 +34,9 @@ class App extends Component {
 
         <Switch>
           <Route path="/login" component={(props) => <LoginContainer {...props} pets={this.state.pets}  />} />
-          <Route path="/pets/:id" component={(props) => <UserContainer {...props} pets={this.state.pets} />}/>
+          <Route path="/create_account" component={(props) => <CreateAccount {...props} />} />
+
+          <Route path="/pet/:id" component={(props) => <UserContainer {...props} pets={this.state.pets} />}/>
         </Switch>
       </div>
     );

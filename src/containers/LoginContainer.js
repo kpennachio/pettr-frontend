@@ -7,7 +7,6 @@ export default class LoginContainer extends Component {
 
   state = {
     name: "",
-    createAccount: false
   }
 
   changeName = (e) => {
@@ -20,10 +19,11 @@ export default class LoginContainer extends Component {
     if (currentPet) {
       localStorage.setItem('currentPet', currentPet.id);
       console.log("local storage", localStorage.getItem('currentPet'));
-      this.props.history.push(`/pets/${currentPet.id}`)
+      this.props.history.push(`/pet/${currentPet.id}`)
     }
     else {
-      console.log("no current pet")
+      console.log("no existing pet")
+      this.props.history.push("/create_account")
     }
   }
 
@@ -41,7 +41,7 @@ export default class LoginContainer extends Component {
         </form>
         <div>
           <p>Or create an account and start going on playdates today!</p>
-          <Link to="/create-account">Create Account</Link>
+          <Link to="/create_account">Create Account</Link>
         </div>
       </div>
       </div>
