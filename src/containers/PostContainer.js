@@ -45,7 +45,7 @@ class PostContainer extends React.Component {
     return (
       <div className="post-container">
         <h2>My Posts</h2>
-        <PostForm createNewPost={this.createNewPost}/>
+        {this.props.showForm && <PostForm createNewPost={this.createNewPost}/>}
         {this.renderPosts()}
       </div>
     )
