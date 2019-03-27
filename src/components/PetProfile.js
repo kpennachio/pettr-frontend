@@ -10,7 +10,6 @@ import DateContainer from '../containers/DateContainer'
 export default class PetProfile extends Component {
 
 
-<<<<<<< HEAD
   // findPet = () => {
   //   let pet = this.props.pets.find(pet => pet.id === parseInt(this.props.match.params.id))
   //   console.log(pet);
@@ -40,11 +39,6 @@ export default class PetProfile extends Component {
         </div>
       )
     }
-=======
-  findPet = () => {
-    let pet = this.props.pets.find(pet => pet.id === parseInt(this.props.match.params.id))
-    return <PetInfo pet={pet}/>
->>>>>>> suggestion-card
   }
 
   render() {
