@@ -33,7 +33,7 @@ class App extends Component {
         <Switch>
           <Route path="/login" component={(props) => <LoginContainer {...props} pets={this.state.pets}  />} />
           <Route path="/create_account" component={(props) => <CreateAccount {...props} />} />
-          <Route path="/pet/:id" component={(props) => <UserContainer {...props} pets={this.state.pets} />}/>
+          <Route path="/pet/:id" render={(props) => <UserContainer {...props} pets={this.state.pets} />}/>
         </Switch>
       </div>
     );

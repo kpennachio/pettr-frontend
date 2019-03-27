@@ -3,7 +3,10 @@ import React from "react";
 class PlayDate extends React.Component {
 
   state = {
-    request: false
+    // gives us the current user information
+    currentUser: JSON.parse(localStorage.getItem('currentPetOb')),
+    pageProfileId: parseInt(this.props.match.params.id)
+
   }
 
   requestPlayDate = () => {
@@ -22,20 +25,37 @@ class PlayDate extends React.Component {
       })
     })
     .then(res => res.json())
-    .then(playDate => {
-      this.setState({
-        request: true
-      })
+    .then(console.log)
+  }
+
+  cancelRequest = () => {
+    let currentUser = this.state.currentUser
+    let pageProfileId = parseInt(this.props.match.params.id)
+    let playDateId = currentUser.sent_requests.find(pD => pD.requested_id === pageProfileId)
+    // if currentUser sent requests contains a PlayDate with the current pet page ID
+    console.log("pd", currentUser.sent_requests.find(pD => pD.requested_id === pageProfileId));
+    fetch(`http://localhost:3000/api/v1/play_dates/${playDateId}`, {
+      method: "DELETE"
     })
+    .then(res=>res.json())
   }
 
   renderButton = () => {
     switch (this.props.user) {
       case false:
-        if (this.state.request === false) {
+        let currentUser = this.state.currentUser
+        let pageProfileId = parseInt(this.props.match.params.id)
+        // if currentUser sent requests contains a PlayDate with the current pet page ID
+        console.log(currentUser.sent_requests.some(pD => pD.requested_id === pageProfileId));
+        if (!currentUser.sent_requests.some(pD => pD.requested_id === pageProfileId)) {
           return <button onClick={this.requestPlayDate}>Request Play Date</button>
         } else {
-          return <button>Requested</button>
+          return (
+            <div>
+              <button onClick={this.cancelRequest}>Requested</button>
+              <p>Click to cancel request</p>
+            </div>
+          )
         }
         break;
       default:

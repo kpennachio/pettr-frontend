@@ -18,6 +18,7 @@ export default class LoginContainer extends Component {
     let currentPet = this.props.pets.find(pet => pet.name === name)
     if (currentPet) {
       localStorage.setItem('currentPet', currentPet.id);
+      localStorage.setItem('currentPetOb', JSON.stringify(currentPet));
       console.log("local storage", localStorage.getItem('currentPet'));
       this.props.history.push(`/pet/${currentPet.id}`)
     }
