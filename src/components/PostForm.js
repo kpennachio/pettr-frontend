@@ -19,7 +19,6 @@ class PostForm extends React.Component {
     }
   }
 
-  // this.seeResult(result)
 
   openWidget = (e) => {
     e.preventDefault()
@@ -29,6 +28,13 @@ class PostForm extends React.Component {
 
   }
 
+  handleSubmit = (e) => {
+    this.props.createNewPost(e, this.state)
+    this.setState({
+      content: "",
+      image: ""
+    })
+  }
 
   render() {
     return (
@@ -46,7 +52,7 @@ class PostForm extends React.Component {
             <input type="text" id="image" value={this.state.image} onChange={this.handleChange}/>
           </p>
           <p>
-            <input type="submit" value="Submit" onClick={(e) => this.props.createNewPost(e, this.state)}/>
+            <input type="submit" value="Submit" onClick={this.handleSubmit}/>
           </p>
         </form>
       </div>
