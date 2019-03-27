@@ -4,6 +4,7 @@ import PetInfo from './PetInfo'
 import PostContainer from '../containers/PostContainer'
 import SuggestionContainer from '../containers/SuggestionContainer'
 import DateContainer from '../containers/DateContainer'
+import PlayDate from './PlayDate'
 // import './css/PetProfile.css'
 // can import every photo and logically render
 // name.
@@ -26,7 +27,10 @@ export default class PetProfile extends Component {
           <h1>Pet Profile</h1>
           <PetInfo pet={this.props.pet}/>
           <PostContainer showForm={true}/>
-          <DateContainer />
+          <div className="dating-container">
+            <PlayDate user={true}/>
+            <DateContainer />
+          </div>
         </div>
       )
     }
@@ -36,6 +40,9 @@ export default class PetProfile extends Component {
           <h1>Pet Profile</h1>
           <PetInfo pet={this.props.pet}/>
           <PostContainer showForm={false}/>
+            <div className="dating-container">
+              <PlayDate user={false}/>
+            </div>
         </div>
       )
     }
