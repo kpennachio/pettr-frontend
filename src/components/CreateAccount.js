@@ -16,7 +16,7 @@ export default class CreateAccount extends Component {
   }
 
   handleChange = (e) => {
-    console.log(e.target)
+    console.log(e.target.value)
     this.setState({[e.target.id]: e.target.value})
   }
 
@@ -52,6 +52,21 @@ export default class CreateAccount extends Component {
           <p>
             <label htmlFor="breed">Breed</label>
             <input type="text" id="breed" value={this.state.breed} onChange={this.handleChange}/>
+          </p>
+          <p>
+            <label htmlFor="hobbies">Hobbies</label>
+            <input type="text" id="hobbies" value={this.state.hobbies} onChange={this.handleChange}/>
+          </p>
+          <p>
+            <label htmlFor="plays_well">Do you play well with others?</label>
+            <input type="checkBox" id="plays_well" value={this.state.plays_well} onChange={this.handleChange}/>
+          </p>
+          <p>
+            <label htmlFor="picture">Select a profile picture</label>
+            <input type="text" id="picture" value={this.state.picture} onChange={this.handleChange}/>
+          </p>
+          <p>
+            <input type="submit" value="Create Account" onChange={this.handleChange}/>
           </p>
         </fieldset>
       </form>
