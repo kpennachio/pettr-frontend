@@ -43,14 +43,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      {localStorage.getItem('currentPet')
-        &&
-      <Fragment>
-       <Link to={`/pet/${localStorage.getItem('currentPet')}`}>Home</Link>
-       <Link to="/login" onClick={this.logout}>Logout</Link>
-      </Fragment>
-      }
-
         <Switch>
           <Route path="/login" component={(props) => <LoginContainer {...props} pets={this.state.pets}  />} />
           <Route path="/create_account" component={(props) => <CreateAccount {...props} createNewPet={this.createNewPet} />} />
