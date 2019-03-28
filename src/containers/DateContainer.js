@@ -6,7 +6,6 @@ import { Card, Icon, Image } from 'semantic-ui-react'
 const DateContainer = (props) => {
 
   const renderDates = () => {
-    console.log(props);
     // debugger
     let requestIds = props.sentPets.filter(pD => {
       if (pD.confirmed_date === true) {

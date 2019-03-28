@@ -29,10 +29,10 @@ class UserContainer extends Component {
         <Fragment>
 
          <Link to={`/pet/${localStorage.getItem('currentPet')}`}>Home</Link>
-         <Link to="/login" onClick={this.logout}>Logout</Link>
-
+         <a href="/login" onClick={this.props.logout}>Logout</a>
+         <Link to="/login" onClick={this.props.logout}>Logout</Link>
          <Header />
-         <PetProfile {...this.props} pet={this.findPet()}/>
+         <PetProfile {...this.props} pet={this.findPet()} addPost={this.props.addPost} deletePost={this.props.deletePost}/>
          <SuggestionContainer pets={this.props.pets}/>
         </Fragment>
       )

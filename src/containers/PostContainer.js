@@ -6,17 +6,12 @@ import PostForm from '../components/PostForm'
 
 class PostContainer extends React.Component {
 
-  state = {
-    posts: [...this.props.pet.posts]
-  }
 
   renderPosts = () => {
-      return this.state.posts.map(post => {
-        return <Post post={post} deletePost={this.deletePost} showForm={this.props.showForm}/>
+      return this.props.pet.posts.map(post => {
+        return <Post post={post} handleDeletePost={this.handleDeletePost} showForm={this.props.showForm}/>
       })
   }
-
-
 
   createNewPost = (e, formData) => {
     e.preventDefault()
@@ -37,27 +32,22 @@ class PostContainer extends React.Component {
     })
     .then(resp => resp.json())
     .then(post => {
-      this.setState((prevState) => ({
-        posts: [...prevState.posts, post]
-      }))
+      this.props.addPost(petId, post)
     })
   }
 
-  deletePost = (postId) => {
+  handleDeletePost = (postId) => {
     fetch(`http://localhost:3000/api/v1/posts/${postId}`, {
       method: "DELETE"
     })
     .then(resp => {
-      this.setState({
-        posts: [...this.state.posts].filter(post => post.id !== postId)
-      })
+      this.props.deletePost(this.props.pet.id, postId)
     })
   }
 
-
-
   render() {
-    console.log(this.props.pet.posts)
+    console.log("post container", this.props);
+
     return (
       <div className="post-container">
         <h2>Posts</h2>
