@@ -140,3 +140,13 @@
   padding: 10px;
   margin: 10px;
 }
+
+.date-requests {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed black;
+  padding: 10px;
+  margin: 10px;
+}
