@@ -29,7 +29,7 @@ export default class PetProfile extends Component {
           <PostContainer {...this.props} showForm={true}/>
           <div className="dating-container">
             <PlayDate {...this.props} user={true}/>
-            
+
           </div>
         </div>
       )
@@ -51,11 +51,11 @@ export default class PetProfile extends Component {
   render() {
     return(
       <Fragment>
-      {this.props.pet ?
-        this.renderPetProfile()
-        :
-        null
-      }
+        {this.props.pet ?
+          this.renderPetProfile()
+          :
+          null
+        }
       </Fragment>
     )
   }

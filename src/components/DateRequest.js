@@ -15,7 +15,7 @@ class DateRequest extends React.Component {
     return requestPets.map(rQ => {
       return (
         <div>
-          {rQ.name}: <button onClick={() => this.props.confirmDate(rQ.id)}>Confirm</button> <button onClick={() => this.props.rejectDate(rQ.id)}>Reject</button>
+          <Link to={`/pet/${rQ.id}`}>{rQ.name}</Link>: <button onClick={() => this.props.confirmDate(rQ.id)}>Confirm</button> <button onClick={() => this.props.rejectDate(rQ.id)}>Reject</button>
         </div>
       )
     })
