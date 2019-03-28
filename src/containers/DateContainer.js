@@ -11,7 +11,7 @@ const DateContainer = (props) => {
         return pD.id
       }
     })
-    let requestPets = requestIds.map(request => props.pets.find(pet => pet.id === request.id))
+    let requestPets = requestIds.map(request => props.pets.find(pet => pet.id === request.requestor_id))
     return requestPets.map(rQ => {
       return (
         <div>
