@@ -116,7 +116,7 @@ class PlayDate extends React.Component {
         return (
           <Fragment>
             <DateRequest {...this.props} confirmDate={this.confirmDate} rejectDate={this.rejectDate} sentPets={this.state.sentPets}/>
-            <DateContainer {...this.props} sentPets={this.state.sentPets}/>
+            <DateContainer {...this.props} sentPets={this.state.sentPets} requestedPets={this.state.requestedPets} />
           </Fragment>
         )
         break;

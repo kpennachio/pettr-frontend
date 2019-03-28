@@ -39,6 +39,14 @@
     float: left;
 }
 
+img {
+  display: block;
+  max-width:230px;
+  max-height:200px;
+  width: auto;
+  height: auto;
+}
+
 /* resize images */
 .profile-pic img {
     width: 100%;
@@ -48,7 +56,7 @@
 
 .pet-info {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   /* align-items: center;
   justify-content: center; */
   border: 1px dashed black;
@@ -56,16 +64,29 @@
   margin: 10px;
 }
 
-.pet-attributes {
-  float: right;
+.column {
+  flex: 50%;
+  /* float: left; */
+  width: 50%;
+  padding: 10px;
 }
+
+.row {
+  display: flex;
+}
+
+/* .row:after {
+  content: "";
+  display: table;
+  clear: both;
+} */
 
 .name {
   float:left;
 }
 
 .pet-attributes {
-  align-items: center;
+  float: right;
 }
 /* ########################################################################## */
 

@@ -12,8 +12,16 @@ const DateContainer = (props) => {
         return pD.id
       }
     })
+    let requestorIds = props.requestedPets.filter(pD => {
+      if (pD.confirmed_date === true) {
+        return pD.id
+      }
+    })
     let requestPets = requestIds.map(request => props.pets.find(pet => pet.id === request.requestor_id))
-    return requestPets.map(confirmedPet => {
+    let requestorPets = requestorIds.map(request => props.pets.find(pet => pet.id === request.requested_id))
+    let allPets = requestPets.concat(requestorPets)
+
+    return allPets.map(confirmedPet => {
       return (
           <Link to={`/pet/${confirmedPet.id}`}>
             <Card className="suggestion-card">
