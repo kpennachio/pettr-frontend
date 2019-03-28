@@ -10,7 +10,7 @@ import './App.css';
 class App extends Component {
 
   state = {
-    pets: [],
+    pets: []
   }
 
   componentDidMount() {
@@ -22,6 +22,37 @@ class App extends Component {
   logout = () => {
     localStorage.removeItem('currentPet')
     console.log("logout")
+  }
+
+  addPost = (petId, post) => {
+    let newPet = this.state.pets.find(pet => pet.id === petId)
+    newPet.posts.push(post)
+    let newPets = this.state.pets.map(pet => {
+      if (pet.id !== newPet.id) {
+        return pet
+      }
+      else {
+        return newPet
+      }
+    })
+
+    this.setState({pets: newPets})
+  }
+
+  deletePost = (petId, postId) => {
+    let newPet = this.state.pets.find(pet => pet.id === petId)
+    let posts = newPet.posts.filter(post => post.id !== postId)
+    newPet.posts = posts
+
+    let newPets = this.state.pets.map(pet => {
+      if (pet.id !== newPet.id) {
+        return pet
+      }
+      else {
+        return newPet
+      }
+    })
+    this.setState({pets: newPets})
   }
 
 
@@ -42,13 +73,14 @@ class App extends Component {
 
 
   render() {
+    console.log(this.state);
     return (
       <div className="App">
         <Switch>
           <Route path="/login" component={(props) => <LoginContainer {...props} pets={this.state.pets}  />} />
           <Route path="/create_account" component={(props) => <CreateAccount {...props} createNewPet={this.createNewPet} />} />
-          <Route path="/home" render={(props) => <UserContainer {...props} pets={this.state.pets} />}/>
-          <Route path="/pet/:id" render={(props) => <UserContainer {...props} pets={this.state.pets} />}/>
+          <Route path="/home" render={(props) => <UserContainer {...props} pets={this.state.pets} logout={this.logout} addPost={this.addPost} deletePost={this.deletePost}/>}/>
+          <Route path="/pet/:id" component={(props) => <UserContainer {...props} pets={this.state.pets} logout={this.logout} addPost={this.addPost} deletePost={this.deletePost}/>}/>
         </Switch>
       </div>
     );
