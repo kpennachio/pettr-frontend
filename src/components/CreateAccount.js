@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from "react-router-dom";
 
 
 export default class CreateAccount extends Component {
@@ -57,6 +58,10 @@ export default class CreateAccount extends Component {
       <div>
       <h1>Create Account</h1>
       <div>
+      <div>
+        <Link to="/login">Try logging in again?</Link>
+      </div>
+      <div>
       <form>
         <fieldset>
           <p>
@@ -93,6 +98,7 @@ export default class CreateAccount extends Component {
           </p>
         </fieldset>
       </form>
+      </div>
 
       </div>
       </div>
