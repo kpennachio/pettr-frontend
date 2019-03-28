@@ -11,7 +11,6 @@ class App extends Component {
 
   state = {
     pets: [],
-    currentUserName: ""
   }
 
   componentDidMount() {
@@ -25,15 +24,30 @@ class App extends Component {
     console.log("logout")
   }
 
+
+
+  createNewPet = (data) => {
+    fetch('http://localhost:3000/api/v1/pets', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify(data)
+    })
+    .then(resp => resp.json())
+    .then(console.log)
+  }
+
+
+
   render() {
     return (
       <div className="App">
-       <Link to="/">Home</Link>
-       <Link to="/login" onClick={this.logout}>Logout</Link>
-
         <Switch>
           <Route path="/login" component={(props) => <LoginContainer {...props} pets={this.state.pets}  />} />
-          <Route path="/create_account" component={(props) => <CreateAccount {...props} />} />
+          <Route path="/create_account" component={(props) => <CreateAccount {...props} createNewPet={this.createNewPet} />} />
+          <Route path="/home" render={(props) => <UserContainer {...props} pets={this.state.pets} />}/>
           <Route path="/pet/:id" render={(props) => <UserContainer {...props} pets={this.state.pets} />}/>
         </Switch>
       </div>

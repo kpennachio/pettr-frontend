@@ -26,7 +26,7 @@ export default class PetProfile extends Component {
         <div>
           <h1>Pet Profile</h1>
           <PetInfo pet={this.props.pet}/>
-          <PostContainer showForm={true}/>
+          <PostContainer {...this.props} showForm={true}/>
           <div className="dating-container">
             <PlayDate {...this.props} user={true}/>
             
@@ -39,7 +39,7 @@ export default class PetProfile extends Component {
         <div>
           <h1>Pet Profile</h1>
           <PetInfo pet={this.props.pet}/>
-          <PostContainer showForm={false}/>
+          <PostContainer {...this.props} showForm={false}/>
             <div className="dating-container">
               <PlayDate {...this.props} user={false}/>
             </div>

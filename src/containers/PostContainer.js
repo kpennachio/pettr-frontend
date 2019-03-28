@@ -7,21 +7,26 @@ import PostForm from '../components/PostForm'
 class PostContainer extends React.Component {
 
   state = {
-    posts: [],
+    posts: [...this.props.pet.posts]
   }
 
   renderPosts = () => {
-    return this.state.posts.map(post => {
-      return <Post post={post} />
-    })
+      return this.state.posts.map(post => {
+        return <Post post={post} deletePost={this.deletePost} showForm={this.props.showForm}/>
+      })
   }
 
-  createNewPost = (e, content) => {
+
+
+  createNewPost = (e, formData) => {
     e.preventDefault()
+    let petId = parseInt(localStorage.getItem('currentPet'))
     let data = {
-      "content": content,
-      "pet_id": 1
+      "content": formData.content,
+      "image": formData.image,
+      "pet_id": petId
     }
+    console.log(formData)
     fetch("http://localhost:3000/api/v1/posts", {
       method: "POST",
       headers: {
@@ -31,17 +36,28 @@ class PostContainer extends React.Component {
       body: JSON.stringify(data)
     })
     .then(resp => resp.json())
-    .then(console.log)
+    .then(post => {
+      this.setState((prevState) => ({
+        posts: [...prevState.posts, post]
+      }))
+    })
   }
 
-  componentDidMount() {
-    fetch("http://localhost:3000/api/v1/posts")
-    .then(resp => resp.json())
-    .then(posts => this.setState({posts}))
+  deletePost = (postId) => {
+    fetch(`http://localhost:3000/api/v1/posts/${postId}`, {
+      method: "DELETE"
+    })
+    .then(resp => {
+      this.setState({
+        posts: [...this.state.posts].filter(post => post.id !== postId)
+      })
+    })
   }
+
 
 
   render() {
+    console.log(this.props.pet.posts)
     return (
       <div className="post-container">
         <h2>Posts</h2>
