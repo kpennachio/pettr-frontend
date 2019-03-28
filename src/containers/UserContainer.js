@@ -33,7 +33,7 @@ class UserContainer extends Component {
 
          <Header />
          <PetProfile {...this.props} pet={this.findPet()}/>
-         <SuggestionContainer pets={this.props.pets}/>
+         <SuggestionContainer {...this.props} pet={this.findPet()} pets={this.props.pets}/>
         </Fragment>
       )
     }

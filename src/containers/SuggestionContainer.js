@@ -4,12 +4,6 @@ import Suggestion from '../components/Suggestion'
 
 class SuggestionContainer extends React.Component {
 
-  state = {
-    pets: this.props.pets,
-    suggested: []
-  }
-
-
   shufflePets = () => {
     let array = this.props.pets
     let i = array.length - 1
@@ -27,11 +21,16 @@ class SuggestionContainer extends React.Component {
 
   renderSuggestions = () => {
     // need to map
-    return this.shufflePets().slice(0,4).map(pet => {
-      if (pet.name !== "Oreo") {
-        return <Suggestion key={pet.id} pet={pet}/>
+    let filteredPets = this.shufflePets().filter(pet => {
+      if (pet.id !== parseInt(localStorage.getItem('currentPet')) && pet.id !== this.props.pet.id) {
+        return pet
       }
     })
+    return filteredPets.slice(0,4).map(pet => {
+      // if (pet.name !== "Oreo") {
+        return <Suggestion key={pet.id} pet={pet}/>
+      }
+    )
   }
 
   render() {
