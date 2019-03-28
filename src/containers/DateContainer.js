@@ -6,20 +6,22 @@ import { Card, Icon, Image } from 'semantic-ui-react'
 const DateContainer = (props) => {
 
   const renderDates = () => {
-    let requestIds = props.pet.received_requests.filter(pD => {
+    console.log(props);
+    // debugger
+    let requestIds = props.sentPets.filter(pD => {
       if (pD.confirmed_date === true) {
         return pD.id
       }
     })
     let requestPets = requestIds.map(request => props.pets.find(pet => pet.id === request.requestor_id))
-    return requestPets.map(rQ => {
+    return requestPets.map(confirmedPet => {
       return (
         <div>
-          <Link to={`/pet/${rQ.id}`}>
+          <Link to={`/pet/${confirmedPet.id}`}>
             <Card className="suggestion-card">
-              <Image className="suggestion-pic" src={rQ.picture} />
+              <Image className="suggestion-pic" src={confirmedPet.picture} />
               <Card.Content>
-                <Card.Header>{rQ.name}</Card.Header>
+                <Card.Header>{confirmedPet.name}</Card.Header>
               </Card.Content>
             </Card>
           </Link>

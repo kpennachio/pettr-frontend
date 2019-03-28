@@ -1,17 +1,20 @@
-import React from "react";
+import React, { Fragment } from "react";
 import DateRequest from "./DateRequest"
+import DateContainer from "../containers/DateContainer"
 
 class PlayDate extends React.Component {
 
   state = {
     // gives us the current user information
     requestedPets: [],
+    sentPets: []
   }
 
   componentDidMount() {
     let currentUser = this.props.pets.find(pet => pet.id === parseInt(localStorage.getItem('currentPet')))
     this.setState({
-      requestedPets: currentUser.sent_requests
+      requestedPets: currentUser.sent_requests,
+      sentPets: currentUser.received_requests
     })
   }
 
@@ -51,6 +54,45 @@ class PlayDate extends React.Component {
     }))
   }
 
+  confirmDate = (requestorPetId) => {
+    let playDateId = this.state.sentPets.find(pD => pD.requestor_id === requestorPetId).id
+    fetch(`http://localhost:3000/api/v1/play_dates/${playDateId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({
+        "confirmed_date": true
+      })
+    })
+    .then(res=>res.json())
+    .then(data => {
+      let oldPlayDate = this.state.sentPets.find(pD => pD.id === data.id)
+      let index = this.state.sentPets.indexOf(oldPlayDate)
+      this.state.sentPets.splice(index, 1)
+      // debugger
+      this.setState((prevState)=>({
+        sentPets: [...prevState.sentPets, data]
+      }))
+    })
+    }
+
+    rejectDate = (requestorPetId) => {
+      // let pageProfileId = parseInt(this.props.match.params.id)
+      console.log(this.state.sentPets);
+      let playDateId = this.state.sentPets.find(pD => pD.requestor_id === requestorPetId).id
+      // debugger
+      fetch(`http://localhost:3000/api/v1/play_dates/${playDateId}`, {
+        method: "DELETE"
+      })
+      .then(res=> this.setState({
+        sentPets: [...this.state.sentPets].filter(pD => pD.id !== playDateId)
+      }))
+    }
+
+
+
   renderButton = () => {
     switch (this.props.user) {
       case false:
@@ -71,7 +113,12 @@ class PlayDate extends React.Component {
         break;
       default:
       case true:
-        return <DateRequest {...this.props}/>
+        return (
+          <Fragment>
+            <DateRequest {...this.props} confirmDate={this.confirmDate} rejectDate={this.rejectDate} sentPets={this.state.sentPets}/>
+            <DateContainer {...this.props} sentPets={this.state.sentPets}/>
+          </Fragment>
+        )
         break;
     }
   }
