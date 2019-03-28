@@ -5,7 +5,6 @@ class PlayDate extends React.Component {
 
   state = {
     // gives us the current user information
-    currentUser: JSON.parse(localStorage.getItem('currentPetOb')),
     requestedPets: [],
   }
 
@@ -40,7 +39,6 @@ class PlayDate extends React.Component {
   }
 
   cancelRequest = () => {
-    let currentUser = this.state.currentUser
     let pageProfileId = parseInt(this.props.match.params.id)
     let playDateId = this.state.requestedPets.find(pD => pD.requested_id === pageProfileId).id
     // if currentUser sent requests contains a PlayDate with the current pet page ID

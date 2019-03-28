@@ -15,7 +15,6 @@ class DateRequest extends React.Component {
     })
   }
 
-// need to finish tomorrow
   rejectDate = (requestorPetId) => {
     // let pageProfileId = parseInt(this.props.match.params.id)
     console.log(this.state.sentPets);
@@ -29,20 +28,43 @@ class DateRequest extends React.Component {
     }))
   }
 
+  confirmDate = (requestorPetId) => {
+    let playDateId = this.state.sentPets.find(pD => pD.requestor_id === requestorPetId).id
+    fetch(`http://localhost:3000/api/v1/play_dates/${playDateId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({
+        "confirmed_date": true
+      })
+    })
+    .then(res=>res.json())
+    .then(data => {
+      let oldPlayDate = this.state.sentPets.find(pD => pD.id === data.id)
+      let index = this.state.sentPets.indexOf(oldPlayDate)
+      this.state.sentPets.splice(index, 1)
+      // debugger
+      this.setState((prevState)=>({
+        sentPets: [...prevState.sentPets, data]
+      }))
+    })
+    }
+
 
   renderRequest = () => {
     // this gets the IDs of all the playdates that are pending a confirmation_date - for the user page
     let requestIds = this.state.sentPets.filter(pD => {
       if (pD.confirmed_date === false) {
         return pD.id
-      }
-    })
-    //                [playdate ids]=>
+      }})
+            //        [playdate ids]=>search for pet object that matches with the playdate requestor id
     let requestPets = requestIds.map(request => this.props.pets.find(pet => pet.id === request.requestor_id))
     return requestPets.map(rQ => {
       return (
         <div>
-          {rQ.name}: <button >Confirm</button> <button onClick={() => this.rejectDate(rQ.id)}>Reject</button>
+          {rQ.name}: <button onClick={() => this.confirmDate(rQ.id)}>Confirm</button> <button onClick={() => this.rejectDate(rQ.id)}>Reject</button>
         </div>
       )
     })
