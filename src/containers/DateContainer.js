@@ -16,7 +16,6 @@ const DateContainer = (props) => {
     let requestPets = requestIds.map(request => props.pets.find(pet => pet.id === request.requestor_id))
     return requestPets.map(confirmedPet => {
       return (
-        <div>
           <Link to={`/pet/${confirmedPet.id}`}>
             <Card className="suggestion-card">
               <Image className="suggestion-pic" src={confirmedPet.picture} />
@@ -25,7 +24,6 @@ const DateContainer = (props) => {
               </Card.Content>
             </Card>
           </Link>
-        </div>
       )
     })
   }
@@ -33,8 +31,10 @@ const DateContainer = (props) => {
 
   return (
   <div className="date-container">
-    Date Container
-    {renderDates()}
+    <h4>My Dates</h4>
+      <Card.Group>
+        {renderDates()}
+      </Card.Group>
   </div>
   )
 }

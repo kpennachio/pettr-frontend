@@ -1,12 +1,11 @@
-import React from "react"
+import React, { Fragment } from "react"
 import { BrowserRouter as Route, Link } from "react-router-dom";
 import { Card, Icon, Image } from 'semantic-ui-react'
 
 
 const Suggestion = (props) => {
   return (
-    <div className="ui four column grid">
-      <div className="row">
+    <Fragment>
         <Link to={`/pet/${props.pet.id}`}>
           <Card className="suggestion-card">
             <Image className="suggestion-pic" src={props.pet.picture} />
@@ -16,8 +15,7 @@ const Suggestion = (props) => {
             </Card.Content>
           </Card>
         </Link>
-      </div>
-    </div>
+    </Fragment>
 
   )
 }

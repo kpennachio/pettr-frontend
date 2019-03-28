@@ -1,5 +1,7 @@
 import React from "react";
 import Suggestion from '../components/Suggestion'
+import { Card } from 'semantic-ui-react'
+
 
 
 class SuggestionContainer extends React.Component {
@@ -37,7 +39,9 @@ class SuggestionContainer extends React.Component {
     return (
       <div className="suggestion-container">
         <h4>Suggestions</h4>
-        {this.renderSuggestions()}
+        <Card.Group>
+          {this.renderSuggestions()}
+        </Card.Group>
       </div>
     )
   }
