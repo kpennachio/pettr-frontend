@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import './App.css';
 import { Route, Link, Switch } from "react-router-dom";
 import UserContainer from './containers/UserContainer'
@@ -9,7 +9,7 @@ import CreateAccount from './components/CreateAccount'
 class App extends Component {
 
   state = {
-    pets: []
+    pets: [],
   }
 
   componentDidMount() {
@@ -22,6 +22,8 @@ class App extends Component {
     localStorage.removeItem('currentPet')
     console.log("logout")
   }
+
+
 
   createNewPet = (data) => {
     fetch('http://localhost:3000/api/v1/pets', {
@@ -36,15 +38,23 @@ class App extends Component {
     .then(console.log)
   }
 
+
+
   render() {
     return (
       <div className="App">
-       <Link to="/">Home</Link>
+      {localStorage.getItem('currentPet')
+        &&
+      <Fragment>
+       <Link to={`/pet/${localStorage.getItem('currentPet')}`}>Home</Link>
        <Link to="/login" onClick={this.logout}>Logout</Link>
+      </Fragment>
+      }
 
         <Switch>
           <Route path="/login" component={(props) => <LoginContainer {...props} pets={this.state.pets}  />} />
           <Route path="/create_account" component={(props) => <CreateAccount {...props} createNewPet={this.createNewPet} />} />
+          <Route path="/home" render={(props) => <UserContainer {...props} pets={this.state.pets} />}/>
           <Route path="/pet/:id" render={(props) => <UserContainer {...props} pets={this.state.pets} />}/>
         </Switch>
       </div>

@@ -15,15 +15,18 @@ export default class LoginContainer extends Component {
 
   updateCurrentUser = (e, name) => {
     e.preventDefault()
+    // fake login by name of pet
     let currentPet = this.props.pets.find(pet => pet.name === name)
+
     if (currentPet) {
+      // set local storage 'currentPet' to id of pet from login
       localStorage.setItem('currentPet', currentPet.id);
-      localStorage.setItem('currentPetOb', JSON.stringify(currentPet));
-      console.log("local storage", localStorage.getItem('currentPet'));
+
+      // redirect to pet's profile after login
       this.props.history.push(`/pet/${currentPet.id}`)
     }
     else {
-      console.log("no existing pet")
+      // if pet name does not exist, redirect to create account page
       this.props.history.push("/create_account")
     }
   }

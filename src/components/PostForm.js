@@ -23,7 +23,9 @@ class PostForm extends React.Component {
   openWidget = (e) => {
     e.preventDefault()
     let widget = window.cloudinary.createUploadWidget({
-      cloudName: process.env.REACT_APP_CLOUD_NAME, uploadPreset: process.env.REACT_APP_UPLOAD_PRESET }, (error, result) => {this.seeResult(result)});
+      cloudName: process.env.REACT_APP_CLOUD_NAME, uploadPreset: process.env.REACT_APP_UPLOAD_PRESET ,
+      sources: [ 'local', 'url']},
+      (error, result) => {this.seeResult(result)});
     widget.open();
 
   }
