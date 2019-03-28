@@ -27,10 +27,8 @@ class UserContainer extends Component {
     if (localStorage.getItem('currentPet')) {
       return(
         <Fragment>
-
          <Link to={`/pet/${localStorage.getItem('currentPet')}`}>Home</Link>
          <a href="/login" onClick={this.props.logout}>Logout</a>
-         <Link to="/login" onClick={this.props.logout}>Logout</Link>
          <Header />
          <PetProfile {...this.props} pet={this.findPet()} addPost={this.props.addPost} deletePost={this.props.deletePost}/>
          <SuggestionContainer {...this.props} pet={this.findPet()} pets={this.props.pets}/>
@@ -53,3 +51,6 @@ class UserContainer extends Component {
 }
 
 export default UserContainer;
+
+
+   // <Link to="/login" onClick={this.props.logout}>Logout</Link>
