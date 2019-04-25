@@ -34,7 +34,6 @@ export default class LoginContainer extends Component {
 
 
   render() {
-    console.log(localStorage.getItem("currentPet"))
     return(
       <div>
       <h1>Login</h1>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Link, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import UserContainer from './containers/UserContainer'
 import LoginContainer from './containers/LoginContainer'
 import CreateAccount from './components/CreateAccount'
@@ -68,12 +68,12 @@ class App extends Component {
     })
     .then(resp => resp.json())
     .then(console.log)
+    // neeed to send created pet to their page
   }
 
 
 
   render() {
-    console.log(this.state);
     return (
       <div className="App">
         <Switch>

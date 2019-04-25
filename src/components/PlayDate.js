@@ -97,8 +97,8 @@ class PlayDate extends React.Component {
     switch (this.props.user) {
       case false:
         // debugger
-        let currentUser = this.props.pets.find(pet => pet.id === parseInt(localStorage.getItem('currentPet')))
-        // if currentUser sent requests contains a PlayDate with the current pet page ID
+        // let currentUser = this.props.pets.find(pet => pet.id === parseInt(localStorage.getItem('currentPet')))
+        // // if currentUser sent requests contains a PlayDate with the current pet page ID
         if (!this.state.requestedPets.some(pD => pD.requested_id === parseInt(this.props.match.params.id))) {
           return <button onClick={this.requestPlayDate}>Request Play Date</button>
         }
@@ -110,7 +110,7 @@ class PlayDate extends React.Component {
             </div>
           )
         }
-        break;
+        // break;
       default:
       case true:
         return (
@@ -119,7 +119,7 @@ class PlayDate extends React.Component {
             <DateContainer {...this.props} sentPets={this.state.sentPets} requestedPets={this.state.requestedPets} />
           </Fragment>
         )
-        break;
+        // break;
     }
   }
 

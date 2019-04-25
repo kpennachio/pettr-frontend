@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import PetProfile from '../components/PetProfile'
 import Header from '../components/Header'
@@ -18,7 +18,6 @@ class UserContainer extends Component {
     else if (localStorage.getItem('currentPet')) {
       pet = this.props.pets.find(pet => pet.id === parseInt(localStorage.getItem('currentPet')))
     }
-    console.log(pet);
     return pet
   }
 
