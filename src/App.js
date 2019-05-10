@@ -77,6 +77,7 @@ class App extends Component {
     return (
       <div className="App">
         <Switch>
+          <Route path="/" exact component={(props) => <LoginContainer {...props} pets={this.state.pets}  />} />
           <Route path="/login" component={(props) => <LoginContainer {...props} pets={this.state.pets}  />} />
           <Route path="/create_account" component={(props) => <CreateAccount {...props} createNewPet={this.createNewPet} />} />
           <Route path="/home" render={(props) => <UserContainer {...props} pets={this.state.pets} logout={this.logout} addPost={this.addPost} deletePost={this.deletePost}/>}/>

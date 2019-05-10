@@ -255,3 +255,15 @@ img {
 .logout-button {
   padding-left: 30px;
 }
+
+/* .inline-block {
+  display: inline-block;
+}
+
+.float-right {
+  float: right;
+} */
+
+#post-submit.ui.blue.small.button {
+  margin-top: 20px !important;
+}
