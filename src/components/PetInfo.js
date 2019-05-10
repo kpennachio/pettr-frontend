@@ -15,7 +15,7 @@ const PetInfo = (props) => {
         </div>
       </div>
 
-      <div className="column pet-attributes">
+      <div className="pet-attributes">
           <p>Age: {age}</p>
           <p>Species: {species}</p>
           <p>Breed: {breed}</p>
