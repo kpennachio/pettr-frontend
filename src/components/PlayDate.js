@@ -1,6 +1,8 @@
 import React, { Fragment } from "react";
 import DateRequest from "./DateRequest"
 import DateContainer from "../containers/DateContainer"
+import { Button } from 'semantic-ui-react'
+
 
 class PlayDate extends React.Component {
 
@@ -100,12 +102,12 @@ class PlayDate extends React.Component {
         // let currentUser = this.props.pets.find(pet => pet.id === parseInt(localStorage.getItem('currentPet')))
         // // if currentUser sent requests contains a PlayDate with the current pet page ID
         if (!this.state.requestedPets.some(pD => pD.requested_id === parseInt(this.props.match.params.id))) {
-          return <button onClick={this.requestPlayDate}>Request Play Date</button>
+          return <Button color="blue" onClick={this.requestPlayDate}>Request Play Date</Button>
         }
         else {
           return (
             <div>
-              <button onClick={this.cancelRequest}>Requested</button>
+              <Button color="blue" onClick={this.cancelRequest}>Requested</Button>
               <p>Click to cancel request</p>
             </div>
           )
