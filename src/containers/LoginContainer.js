@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom";
+import { Form, Input, Button } from 'semantic-ui-react'
+
+import Header from '../components/Header'
 
 
 export default class LoginContainer extends Component {
@@ -35,19 +38,25 @@ export default class LoginContainer extends Component {
 
   render() {
     return(
-      <div>
-      <h1>Login</h1>
-      <div>
-        <p>Enter your name to login:</p>
-        <form onSubmit={(e) => this.updateCurrentUser(e, this.state.name)}>
-          <input type="text" onChange={this.changeName}/>
-          <input type="submit" />
-        </form>
+      <div className="login-page">
+      <Header />
+      <div className="login-container centered" >
+        <h1 id="login-header">Login</h1>
         <div>
-          <p>Or create an account and start going on playdates today!</p>
-          <Link to="/create_account">Create Account</Link>
+          <p>Enter your name to login:</p>
+          <Form onSubmit={(e) => this.updateCurrentUser(e, this.state.name)}>
+            <Form.Field control={Input} onChange={this.changeName}/>
+            <Button color="blue" type='submit'>
+                Login
+            </Button>
+          </Form>
+          <br/>
+          <div>
+            <p>Or create an account and start going on playdates today!</p>
+            <Link to="/create_account">Create Account</Link>
+          </div>
         </div>
-      </div>
+        </div>
       </div>
     )
   }

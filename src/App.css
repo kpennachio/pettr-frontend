@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Baloo+Bhai');
+
+
 .App {
   /* text-align: center; */
 }
@@ -181,4 +184,39 @@ img {
   border-radius: 0 !important;
   width:auto !important;
   margin:auto
+}
+
+.login-page {
+  height: 100vh;
+  padding: 20px;
+  background-image: url("https://res.cloudinary.com/mod4flatiron010719/image/upload/v1557506098/goifwma3guwdfmmel0uy.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.login-container {
+  width: 400px;
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 20px;
+}
+
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#login-header {
+  text-align: center;
+}
+
+#logo {
+  font-family: 'Baloo Bhai', cursive;
+  font-size: 4em;
+
+}
+
+.user-container {
+  background-color: #e2e2e2;
 }

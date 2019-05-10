@@ -49,9 +49,9 @@ class UserContainer extends Component {
   render() {
 
     return (
-      <Fragment>
+      <div className="user-container">
       {this.renderUserContainer()}
-      </Fragment>
+      </div>
     )
   }
 }

@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom";
+import Header from '../components/Header'
+import { Form, Input, Button, Image } from 'semantic-ui-react'
 
 
 export default class CreateAccount extends Component {
@@ -55,7 +57,10 @@ export default class CreateAccount extends Component {
 
   render() {
     return(
-      <div>
+      <div className="login-page">
+      <Header />
+      <div className="login-container centered" >
+
       <h1>Create Account</h1>
       <div>
       <div>
@@ -89,9 +94,10 @@ export default class CreateAccount extends Component {
             <input type="checkBox" id="plays_well" checked={this.state.plays_well} onClick={this.handleCheckboxChange}/>
           </p>
           <p>
-            <label htmlFor="picture">Select a profile picture</label>
-            <button onClick={this.openWidget}>Select Image</button>
-            <input type="text" id="image" value={this.state.picture} onChange={this.handleChange}/>
+          <label htmlFor="picture">Select a profile picture</label>
+          <Button size="mini" onClick={this.openWidget}>Select Image</Button>
+          <Image src={this.state.picture}
+          onChange={this.handleChange} className="gift-form-image"/>
           </p>
           <p>
             <input type="submit" value="Create Account" onClick={this.handleSubmit}/>
@@ -99,7 +105,7 @@ export default class CreateAccount extends Component {
         </fieldset>
       </form>
       </div>
-
+      </div>
       </div>
       </div>
     )
