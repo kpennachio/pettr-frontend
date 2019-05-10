@@ -11,10 +11,10 @@ class Post extends React.Component {
       <Card >
         <Card.Content>
         <p>{this.props.post.content}</p>
-        <Image floated='center'  src={this.props.post.image} alt={this.props.post.content}/>
+        <Image floated='center'  src={this.props.post.image}/>
         </Card.Content>
         <Card.Content extra>
-          {this.props.showForm && <Button onClick={() => this.props.handleDeletePost(this.props.post.id)}>Delete Post</Button>}
+          {this.props.showForm && <Button color='grey' onClick={() => this.props.handleDeletePost(this.props.post.id)}>Delete Post</Button>}
           </Card.Content>
       </Card>
     )

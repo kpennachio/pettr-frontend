@@ -50,7 +50,9 @@ class UserContainer extends Component {
 
     return (
       <div className="user-container">
-      {this.renderUserContainer()}
+        <div className="user-padding">
+          {this.renderUserContainer()}
+        </div>
       </div>
     )
   }
