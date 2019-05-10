@@ -38,7 +38,7 @@ const DateContainer = (props) => {
 
   return (
   <div className="date-container">
-    <h4>My Dates</h4>
+    <h2>My Dates</h2>
       <Card.Group>
         {renderDates()}
       </Card.Group>

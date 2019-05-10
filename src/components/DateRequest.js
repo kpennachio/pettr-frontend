@@ -24,7 +24,7 @@ class DateRequest extends React.Component {
   render() {
     return (
       <div className="date-requests">
-        <h5>Date Requests</h5>
+        <h2>Date Requests</h2>
         {this.renderRequest()}
       </div>
     )

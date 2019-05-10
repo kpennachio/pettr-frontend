@@ -38,7 +38,7 @@ class SuggestionContainer extends React.Component {
   render() {
     return (
       <div className="suggestion-container">
-        <h4>Suggestions</h4>
+        <h2>Suggestions</h2>
         <br/>
         <Card.Group>
           {this.renderSuggestions()}
