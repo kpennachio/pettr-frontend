@@ -39,6 +39,7 @@ class SuggestionContainer extends React.Component {
     return (
       <div className="suggestion-container">
         <h4>Suggestions</h4>
+        <br/>
         <Card.Group>
           {this.renderSuggestions()}
         </Card.Group>
