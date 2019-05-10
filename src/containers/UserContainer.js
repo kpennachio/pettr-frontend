@@ -1,4 +1,6 @@
 import React, { Component, Fragment } from 'react'
+import { Menu } from 'semantic-ui-react'
+
 import { Link } from "react-router-dom";
 
 import PetProfile from '../components/PetProfile'
@@ -8,6 +10,9 @@ import SuggestionContainer from './SuggestionContainer'
 class UserContainer extends Component {
 
 
+  handleItemClick = () => {
+
+  }
 
   // finds pet from id in the URL
   findPet = () => {
@@ -26,11 +31,13 @@ class UserContainer extends Component {
     if (localStorage.getItem('currentPet')) {
       return(
         <Fragment>
+        <Header />
          <Link to={`/pet/${localStorage.getItem('currentPet')}`}>Home</Link>
          <a href="/login" onClick={this.props.logout}>Logout</a>
-         <Header />
-         <PetProfile {...this.props} pet={this.findPet()} addPost={this.props.addPost} deletePost={this.props.deletePost}/>
-         <SuggestionContainer {...this.props} pet={this.findPet()} pets={this.props.pets}/>
+         <div className="">
+           <PetProfile {...this.props} pet={this.findPet()} addPost={this.props.addPost} deletePost={this.props.deletePost}/>
+           <SuggestionContainer {...this.props} pet={this.findPet()} pets={this.props.pets}/>
+         </div>
         </Fragment>
       )
     }
@@ -53,3 +60,23 @@ export default UserContainer;
 
 
    // <Link to="/login" onClick={this.props.logout}>Logout</Link>
+
+
+   // <Menu fixed="top" secondary className="header" size="massive">
+   //   <Menu.Item
+   //     id="logo"
+   //     name="pettr"
+   //     context="Pettr"
+   //     onClick={this.handleItemClick}
+   //   />
+   //   <Menu.Item
+   //     as={Link} to={`/pet/${localStorage.getItem('currentPet')}`}
+   //     name="home"
+   //     context="Home"
+   //   />
+   //   <Menu.Item
+   //     as={Link} to='/dashboard'
+   //     name="logout"
+   //     context="Logout"
+   //   />
+   // </Menu>

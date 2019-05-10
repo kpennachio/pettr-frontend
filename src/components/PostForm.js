@@ -1,4 +1,5 @@
 import React from "react";
+import { Button, Image } from 'semantic-ui-react'
 
 class PostForm extends React.Component {
 
@@ -41,20 +42,20 @@ class PostForm extends React.Component {
   render() {
     return (
       <div>
-        <h2>Create a New Post</h2>
+        <strong>Create a New Post</strong>
         <form >
             <label htmlFor="content">What are you up to?</label>
           <p>
             <textarea id="content" value={this.state.content} onChange={this.handleChange}/>
           </p>
 
-            <label htmlFor="image">Upload a picture</label>
+          <label htmlFor="image">Upload a picture</label><br/>
+
+          <Button size="mini" onClick={this.openWidget}>Select Image</Button>
+          <Image src={this.state.image} className="gift-form-image"/>
           <p>
-            <button onClick={this.openWidget}>Select Image</button>
-            <input type="text" id="image" value={this.state.image} onChange={this.handleChange}/>
-          </p>
-          <p>
-            <input type="submit" value="Submit" onClick={this.handleSubmit}/>
+          <br/>
+          <Button color="blue" size="tiny" type="submit" value="Submit" onClick={this.handleSubmit}>Submit</Button>
           </p>
         </form>
       </div>
@@ -62,3 +63,8 @@ class PostForm extends React.Component {
   }
 }
 export default PostForm
+
+// <p>
+//   <button onClick={this.openWidget}>Select Image</button>
+//   <input type="text" id="image" value={this.state.image} onChange={this.handleChange}/>
+// </p>

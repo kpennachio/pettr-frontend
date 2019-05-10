@@ -1,6 +1,7 @@
 import React from "react";
 import Post from '../components/Post'
 import PostForm from '../components/PostForm'
+import { Card } from 'semantic-ui-react'
 
 
 
@@ -51,7 +52,10 @@ class PostContainer extends React.Component {
       <div className="post-container">
         <h2>Posts</h2>
         {this.props.showForm && <PostForm createNewPost={this.createNewPost}/>}
+        <br/>
+        <Card.Group>
         {this.renderPosts()}
+        </Card.Group>
       </div>
     )
   }
