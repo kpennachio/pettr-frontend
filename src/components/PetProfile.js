@@ -24,7 +24,7 @@ export default class PetProfile extends Component {
     if (this.props.pet.id === parseInt(localStorage.getItem('currentPet'))) {
       return(
         <div>
-          <h1>Pet Profile</h1>
+
           <PetInfo pet={this.props.pet}/>
           <PostContainer {...this.props} showForm={true}/>
           <div className="dating-container">
@@ -37,7 +37,7 @@ export default class PetProfile extends Component {
     else {
       return(
         <div>
-          <h1>Pet Profile</h1>
+
           <PetInfo pet={this.props.pet}/>
           <PostContainer {...this.props} showForm={false}/>
             <div className="dating-container">

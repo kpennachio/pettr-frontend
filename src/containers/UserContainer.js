@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 import PetProfile from '../components/PetProfile'
 import Header from '../components/Header'
+import NavBar from '../components/NavBar'
 import SuggestionContainer from './SuggestionContainer'
 
 class UserContainer extends Component {
@@ -31,13 +32,10 @@ class UserContainer extends Component {
     if (localStorage.getItem('currentPet')) {
       return(
         <Fragment>
-        <Header />
-         <Link to={`/pet/${localStorage.getItem('currentPet')}`}>Home</Link>
-         <a href="/login" onClick={this.props.logout}>Logout</a>
-         <div className="">
-           <PetProfile {...this.props} pet={this.findPet()} addPost={this.props.addPost} deletePost={this.props.deletePost}/>
-           <SuggestionContainer {...this.props} pet={this.findPet()} pets={this.props.pets}/>
-         </div>
+           <div className="">
+             <PetProfile {...this.props} pet={this.findPet()} addPost={this.props.addPost} deletePost={this.props.deletePost}/>
+             <SuggestionContainer {...this.props} pet={this.findPet()} pets={this.props.pets}/>
+           </div>
         </Fragment>
       )
     }
@@ -51,6 +49,10 @@ class UserContainer extends Component {
     return (
       <div className="user-container">
         <div className="user-padding">
+          <div className="header-navbar">
+            <Header />
+            <NavBar logout={this.props.logout}/>
+          </div>
           {this.renderUserContainer()}
         </div>
       </div>

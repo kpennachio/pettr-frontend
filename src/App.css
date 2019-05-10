@@ -214,7 +214,7 @@ img {
 #logo {
   font-family: 'Baloo Bhai', cursive;
   font-size: 4em;
-
+  display: inline-block;
 }
 
 .user-container {
@@ -223,4 +223,20 @@ img {
 
 .user-padding {
   padding: 20px
+}
+
+.navbar {
+  float: right;
+  display: inline-block;
+  padding-top: 20px;
+  font-size: 20px;
+}
+
+
+.header-navbar {
+  position: relative;
+}
+
+.logout-button {
+  padding-left: 30px;
 }
