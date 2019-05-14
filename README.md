@@ -11,5 +11,7 @@ This project was made by Katie Pennachio and Chris Volpe.
 </p>
 
 <h3>Technology</h3>
-<p>Ruby on Rails API</p>
-<p>React</p>
+<ul>
+<li>Ruby on Rails API</li>
+<li>React</li>
+</ul>
