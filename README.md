@@ -12,6 +12,6 @@ This project was made by Katie Pennachio and Chris Volpe.
 
 <h3>Technology</h3>
 <ul>
-<li>Ruby on Rails API</li>
-<li>React</li>
+<li>Ruby on Rails API - backend repository: https://github.com/kpennachio/Pet-Date-Backend</li>
+<li>React - current repository</li>
 </ul>
